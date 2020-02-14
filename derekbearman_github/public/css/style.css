@@ -1,0 +1,786 @@
+/**********************/
+/***** Global CSS *****/
+/**********************/
+
+:root {
+  --dark: #111;
+  --light: #fff;
+  --shadow: 0px 0px 10px 0px #000;
+  --shadow-light: 0 0 5px #fff;
+  --inner-shadow: 0px 0px 10px 0px #000 inset;
+  --inner-shadow-light: 0px 0px 10px 0px #fff inset;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--dark);
+}
+
+body {
+  background-color: var(--dark);
+  margin: auto;
+}
+
+.container {
+  display: grid;
+  margin: 0;
+  min-height: 80vh;
+  background-image: url(../img/mountain_adventure.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  filter: brightness(200%);
+}
+
+/**********************/
+/******* Navbar *******/
+/**********************/
+
+nav {
+  height: 10vh;
+  background-color: #111;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.nav-container {
+  display: grid;
+  grid-template-areas: 'logo main-nav';
+  max-width: 1920px;
+  margin: auto;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+}
+
+nav .logo {
+  grid-area: logo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav .logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+  nav .logo img {
+	  height: 7.5vh;
+	  border: var(--border-light);
+	  border-radius: 50%;
+  }
+
+nav .main-nav ul {
+  grid-area: main-nav;
+  list-style: none;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 10vh;
+  align-items: center;
+}
+
+  nav .main-nav li {
+	  height: 100%;
+  }
+
+  nav .main-nav a {
+	  height: 100%;
+	  width: 100%;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+  }
+
+  nav .main-nav a:hover{
+	  color: var(--dark);
+	  background: var(--light);
+	  transition: all .3s ease;
+  }
+
+		  
+/* Hamburger Nav */
+
+.mini-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  display: none;
+}
+
+.mini-nav .toggler {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 10vh;
+  height: 10vh;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mini-nav .hamburger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 8vh;
+  height: 10vh;
+  padding: 2vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+
+}
+
+  .mini-nav .hamburger > div {
+	  position: relative;
+	  width: 100%;
+	  height: 2px;
+	  background-color: white;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  transition: all 0.4s ease;
+  }
+
+  /* Top and Bottom Lines */
+  .mini-nav .hamburger > div:before,
+  .mini-nav .hamburger > div:after {
+	  content: "";
+	  position: absolute;
+	  top: -7px;
+	  width: 100%;
+	  height: 2px;
+	  background: inherit;
+  }
+
+  .mini-nav .hamburger > div:after {
+	  top: 7px;
+  }
+
+/* Toggler Animation */
+.mini-nav .toggler:checked + .hamburger > div {
+  transform: rotate(135deg);
+}
+
+/* Turn Lines into X */
+.mini-nav .toggler:checked + .hamburger > div:before,
+.mini-nav .toggler:checked + .hamburger > div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+/* Rotate on Hover when Checked */
+.mini-nav .toggler:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+
+
+/* Dropdown mini-nav */
+.mini-nav .dropdown {
+  top: 0;
+  right: 0;
+  width: 33vw;
+  padding-top: 10vh;
+  visibility: hidden;
+}
+
+.mini-nav .dropdown ul {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(4, 50px);
+  overflow: hidden;
+  background: #333;
+  list-style: none;
+}
+
+.mini-nav .dropdown a {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid rgba(255, 255, 255, .5);
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+  padding: 2vh;
+
+}
+
+.mini-nav .dropdown ul:first-child {
+  border-top: 1px solid rgba(255, 255, 255, .5);
+
+}
+
+.mini-nav .dropdown a:hover {
+  background: #aaa;
+}
+
+/* Show Mini-nav */
+.mini-nav .toggler:checked ~ .dropdown {
+  visibility: visible;
+}
+
+
+
+
+/**********************/
+/**** Landing Page ****/
+/**********************/
+
+.showcase {
+  width: 100%;
+  text-align: center;
+  color: var(--light);
+}
+
+  .showcase h1 {
+	  z-index: 2;
+	  font-size: 2.5rem;
+	  background-color: rgba(3, 3, 3, .5);
+	  text-shadow: 0px 0px 5px #111;
+	  border-bottom: solid 1px #fff;
+	  height: 20vh;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+  }
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100%;
+}
+
+  .services h2 {
+	  font-size: 2.5rem;
+  }
+
+.service {
+  z-index: 1;
+  transition: transform .3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../img/mountain_adventure.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  filter: grayscale(100%);
+}
+
+.service a {
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  text-shadow: var(--shadow-light);
+}
+
+  .service:hover {
+	  cursor: pointer;
+	  filter: contrast(110%);
+  }
+
+  .service .text:hover {
+	  transform: scale(1.5);
+	  transition: all .3s ease;
+  }
+
+  .webdev {
+	  border-right: solid .5px #fff;
+  }
+
+  .copyedit {
+	  border-left: solid .5px #fff;
+  }
+
+
+/**********************/
+/**** About Page *****/
+/**********************/
+
+.welcome {
+  background: rgba(200, 200, 200, .5);
+  border: solid 2px #fff;
+  color: #111;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 3rem;
+  width: 66%;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.welcome h1 {
+  padding: 5rem 0;
+  line-height: 5rem;
+}
+
+.welcome p {
+  padding: .75rem;
+}
+
+.welcome a {
+  color: #444;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.welcome a:hover {
+  color: #222;
+}
+
+
+
+/**********************/
+/**** Webdev Page *****/
+/**********************/
+
+header {
+  padding: auto;
+}
+
+  #header-content {
+	  margin: auto;
+	  padding: 10vh 0;
+  }
+
+#name h1, #name h2 {
+  text-align: center;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 4rem;
+  padding: 2vh 0px;
+  text-shadow: 0px 0px 10px #111;
+}
+
+#name h2 {
+  font-size: 3rem;
+}
+
+#introduction {
+  padding: 3rem 0px;
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  box-shadow: var(--inner-shadow);
+  text-shadow: 0px 0px 5px #421500;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #fff;
+  background-color: rgba(3, 3, 3, .7);
+
+}
+
+#projects {
+  padding: 10vh 10vw;
+  display: grid;
+  grid-gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-rows: auto;
+  align-items: center;
+}
+
+  #projects h1 {
+	  padding: 1.5rem 0;
+	  color: var(--dark);
+  }
+
+  .project {
+	  background-color: rgba(200, 200, 200, .5);
+	  border: solid 2px #fff;
+	  text-align: center;
+  }
+
+  .project a {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  text-decoration: none;
+	  color: var(--dark);
+	  
+  }
+
+  .project a:hover {
+	  transform: scale(1.05);
+  }
+
+  .project .fa {
+	  padding: 3vh;
+	  display: inline-block;
+  }
+
+  .project .fa:hover {
+	  transform: scale(1.4);
+  }
+
+  .project-image {
+	  background-position: center;
+	  background-size: contain;
+	  background-repeat: no-repeat;
+	  font-size: 2rem;
+	  height: 33vh;
+	  width: 80%;
+	  padding: 2vh 3vw;
+	  transition: transform .2s;
+	  filter: brightness(50%);
+  }
+  
+  .project-1 {
+	  background-image: url(../img/bephoto.png);
+  }
+  
+  .project-2 {
+	  background-image: url(../img/jwhayland.png);
+  }
+  
+  .project-3 {
+	  background-image: url(../img/treering.png);
+  }
+  
+  .project-4 {
+	  background-image: url(../img/skybuy.png);
+  }
+  
+
+  .filler {
+	  background-color: var(--dark);
+	  color: var(--light);
+	  font-size: 2rem;
+	  margin: 1.5rem;
+	  height: 37vh;
+	  border: solid 2px #fff;
+  }
+
+	  .filler p {
+		  transform: translateY(15vh);
+	  }
+
+#follow-up {
+  padding: 3rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--light);
+  background-color: rgba(3, 3, 3, .7);
+  box-shadow: var(--inner-shadow);
+  line-height: 2rem;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #fff;
+}
+
+#follow-up h2, #follow-up p {
+  filter: contrast(200%);
+  text-shadow: 0px 0px 5px #421500;
+}
+
+#contact-lens {
+  padding: 10vh;
+}
+
+form {
+  width: 60vw;
+  max-width: 1500px;
+  margin: auto;
+  padding: 3rem;
+  color: var(--light);
+  font-weight: bold;
+  background-image: url(../img/parchment.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: solid 2px #fff;	
+  border-radius: 5px;
+  filter: brightness(50%);
+}
+
+  form label {
+	  height: 2rem;
+	  display: block;
+	  font-size: 1.5rem;
+  }
+
+  form input {
+	  width: 100%;
+	  font-size: 1.5rem;
+	  border: solid 2px #fff;
+	  margin-bottom: 1vh;
+	  padding: .5rem;
+	  background-color: rgba(255, 255, 255, .5);
+  }
+
+  form textarea {
+	  width: 100%;
+	  height: 25vh;
+	  font-size: 1.2rem;
+	  padding: 1rem;
+	  border: solid 2px #fff;
+	  background-color: rgba(255, 255, 255, .5);
+  }
+
+  .alert {
+	  color: var(--light);
+	  text-shadow: var(--shadow);
+	  box-shadow: var(--shadow-light);
+	  border: var(--border-light);
+	  padding: 1rem;
+	  margin-top: .7rem;
+  }
+
+  .alert-danger {
+	  background-color: #9f0505;
+  }
+
+  .alert-success {
+	  background-color: #059f05;
+  }
+
+  form #submit {
+	  color: var(--light);
+	  background-color: var(--dark);
+	  font-weight: bold;
+	  height: 3rem;
+	  opacity: 1;
+	  margin-top: 1rem;
+	  border: solid 2px #333;
+  }
+
+	  form #submit:hover {
+		  background-color: var(--light);
+		  color: var(--dark);
+		  cursor: pointer;
+	  }
+
+/**********************/
+/***** Copyeditor *****/
+/**********************/
+
+.definition	{
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: var(--dark);
+  padding: 10vh 5vw 3vh 5vw;
+  width: 66vw;
+  margin: 10vh auto;
+  background-color: rgba(200, 200, 200, .5);
+  border: solid 2px #fff;
+  transition: all 0.4s ease;
+}
+
+.definition p {
+  padding: 3vh 3vw;
+}
+
+.show-long-answer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3vh auto;
+  padding: .75rem;
+  background-color: #111;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: solid 2px #111;
+
+}
+
+.long-answer {
+  display: none;
+  transition: all 0.4s ease;
+
+}
+
+.long-answer h2, .long-answer h2 + p {
+  text-align: center;
+}
+
+.show-long-answer:hover {
+  color: #111;
+  cursor: pointer;
+  background-color: var(--light);
+}
+
+  
+.book-content {
+  height: 50vh;
+  display: grid;
+  align-items: center;
+}
+
+.book-image {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 33vh;
+  width: 80%;
+  transition: transform .2s;
+  filter: brightness(50%);
+  padding-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.book-1 {
+  background-image: url(../img/beyondwords.png);
+}
+
+.book-2 {
+  background-image: url(../img/josephine.png);
+}
+
+
+
+/**********************/
+/******* Footer *******/
+/**********************/
+
+footer {
+  height: 10vh;
+  color: #fff;
+  background-color: #111;
+  box-shadow: var(--shadow-light);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+  #email, #copyright {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+  }
+
+  #email a {
+	  text-decoration: none;
+	  color: #fff;
+  }
+
+  #email a:hover {
+	  color: #777;
+	  cursor: pointer;
+  }
+
+
+/**********************/
+/**** Media Queries ***/
+/**********************/
+
+@media only screen and (max-width: 750px) {
+
+  /* Navbar Changes */
+
+  nav .logo {
+	  justify-content: left;
+	  align-items: center;
+	  padding: 0;
+	  padding-left: 5vw;
+  }
+
+  nav .logo a {
+	  justify-content: center;
+	  align-items: center;
+	  
+  }
+
+  .main-nav {
+	  display: none;
+  }
+
+  .mini-nav {
+	  display: block;
+	  grid-area: 'main-nav';
+
+  }
+
+  .mini-nav .toggler, .mini-nav .hamburger {
+	  visibility: visible;
+  }
+
+
+  /* Showcase Changes */
+
+  #header-content {
+	  padding: 5vh 0;
+  }
+
+  .showcase {
+	  padding: 0px;
+	  margin: 0px;
+  }
+
+  .services {
+	  grid-template-columns: 1fr;
+  }
+
+  .showcase h1 {
+	  font-size: 2rem;
+  }
+  
+  .service {
+	  padding: 0px;
+	  filter: none;
+	  height: 100%;
+  }
+
+  .webdev, .copyedit {
+	  border: none;
+  }
+
+  .webdev {
+	  border-bottom: solid .5px #fff;
+  }
+
+
+  .welcome {
+	  font-size: 1.4rem;
+	  width: 90%;
+	  border-radius: 0;
+	  padding: 1vh 1vw;
+  }
+
+  .welcome h1 {
+	  padding: 1vh 1vw;
+  }
+
+  #projects {
+	  grid-template-columns: 1fr;
+	  padding: 10vh 0;
+  }
+
+  .definition {
+	  width: 90vw;
+  }
+
+  form {
+	  width: 100%;
+	  padding: 2rem;
+  }
+
+  #contact-lens {
+	  padding: 10vh 0;
+  }
+
+  footer {
+	  grid-template-columns: 1fr;
+  }
+
+}
