@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/9445e521f7.js" crossorigin="anonymous"></script>
+
+    <title>SongSearch</title>
+</head>
+<body style="background-image: url(css/banner.jpg); background-position: top center; background-repeat: no-repeat;">
+    <div class="playlist card sticky-top" style="width: 300px; z-index: 2; position: fixed; top: 0;">
+        <div class="m-2">
+            <h5 class="col-sm">Your Playlist</h5>
+            
+
+        </div>
+    </div>
+    <div class="container" style="margin-top: 325px;">
+        <div class="row">
+            <div class="col-md-6 m-auto" id="songResults">
+                <h3 class="text-center mb-3">SongSearch</h3>
+                <div class="form-group">
+                    <input type="text" id="search" class="form-control form-control-lg"
+                    placeholder="Enter song or artist name...">
+                </div>
+                <div id="match-list"></div> 
+            </div>
+        </div>
+    </div>
+    <script src="js/store.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
